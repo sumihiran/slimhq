@@ -1,0 +1,9 @@
+<div>
+  <p *ngIf="isLoading">Loading..</p>
+  <ul *ngIf="!isLoading && tasks.length > 0">
+    <li *ngFor="let task of tasks" >{{ task.title }}</li>
+  </ul>
+  <div *ngIf="!isLoading && tasks.length === 0">
+    <h2>Task list is empty</h2>
+  </div>
+</div>
