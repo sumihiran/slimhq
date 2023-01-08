@@ -1,8 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TaskListComponent } from './task-list.component';
-import { ITask, TasksService } from "./tasks.service";
+import { TasksService } from "./tasks.service";
 import { Observable, of } from "rxjs";
+import { ITask } from "@slimhq/common";
 
 const TASKS : Array<ITask> = [
   {

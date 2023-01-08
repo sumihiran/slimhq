@@ -1,6 +1,7 @@
 import { Get, JsonController } from "routing-controllers";
-import { ITask, TasksService } from "../tasks.service";
+import { TasksService } from "../tasks.service";
 import { Service } from "typedi";
+import { ITask } from "@slimhq/common";
 
 @JsonController()
 @Service()

@@ -1,8 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { ITask, TasksService } from "./task-list/tasks.service";
+import { TasksService } from "./task-list/tasks.service";
 import { Observable, of } from "rxjs";
 import {TaskListComponent} from "./task-list/task-list.component";
+import { ITask } from "@slimhq/common";
 
 describe('AppComponent', () => {
 

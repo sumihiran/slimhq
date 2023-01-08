@@ -2,8 +2,9 @@ import { Container } from "typedi";
 import { createExpressServer, useContainer } from "routing-controllers";
 import { Application } from "express";
 import { TasksController } from "./tasks.controller";
-import { ITask, TasksService } from "../tasks.service";
+import { TasksService } from "../tasks.service";
 import * as request from "supertest";
+import { ITask } from "@slimhq/common";
 
 describe('TaskController', () => {
   let app: Application | null;

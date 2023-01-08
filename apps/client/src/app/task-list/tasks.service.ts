@@ -1,13 +1,9 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { ITask } from "@slimhq/common";
 
 const TASKS = '/api/tasks';
-
-export interface ITask {
-  id: number,
-  title: string
-}
 
 @Injectable()
 export class TasksService {

@@ -1,9 +1,5 @@
 import { Service } from "typedi";
-
-export interface ITask {
-  id: number,
-  title: string
-}
+import { ITask } from "@slimhq/common";
 
 const tasks: Array<ITask> = [
   {
