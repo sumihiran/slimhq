@@ -11,3 +11,10 @@ trim_trailing_whitespace = true
 [*.md]
 max_line_length = off
 trim_trailing_whitespace = false
+
+[*.ts]
+end_of_line = lf
+ij_typescript_spaces_within_brackets = true
+
+[*.js]
+ij_javascript_spaces_within_imports = true
