@@ -1,0 +1,45 @@
+name: ⚙️ CI
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  check:
+    name: "Build, lint, test"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - uses: nrwl/nx-set-shas@v3
+
+      - name: Clen Install
+        run: npm ci
+
+      - name: Lint workspace files
+        run: npx nx workspace-lint
+
+      - name: Get number of CPU cores
+        if: always()
+        id: cpu-cores
+        uses: SimenB/github-actions-cpu-cores@v1
+
+      - name: 🔨 Build
+        run: npx nx run-many --target=build --parallel=${{ steps.cpu-cores.outputs.count }}
+
+      - name: 🔎 Lint
+        run: npx nx run-many --target=lint --parallel=${{ steps.cpu-cores.outputs.count }}
+
+      - name: 🧪 Test
+        run: npx nx run-many --target=test --parallel=${{ steps.cpu-cores.outputs.count }} --ci --code-coverage --coverageReporters=lcov && node ./tools/coverageMerger.js
+
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
